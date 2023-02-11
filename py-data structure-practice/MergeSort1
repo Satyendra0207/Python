@@ -1,0 +1,40 @@
+num = int(input("How many elements you want: "))
+list = [int(input()) for x in range (num)]          
+
+#For dividing the list
+def mergesort(list):
+    if len(list)>1:
+        mid = len(list)//2
+        left_side = list[:mid]
+        right_side = list[mid:]
+        mergesort(left_side)
+        mergesort(right_side)
+        i = 0
+        j = 0
+        k = 0
+        #For merging the list
+        while i < len(left_side) and j < (len(right_side)):
+            if left_side[i] < right_side[j]:
+                list[k] = left_side[i]
+                i = i+1
+                k = k+1
+            else:                         #If the above condition is not true then it will go to the else part
+                list[k] = right_side[j]
+                j = j+1
+                k = k+1
+        #For checking the value is in the left sublist        
+        while i < len(left_side):
+            list[k] = left_side[i]
+            i = i+1
+            k = k+1
+        #For checking the value is in right sublist    
+        while j < len(right_side):
+            list[k] = right_side[j]
+            j = j+1
+            k = k+1
+          
+mergesort(list)
+print("Sorting list: ", list)            
+
+
+
